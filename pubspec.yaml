@@ -1,0 +1,49 @@
+name: plant_rec
+description: A new Flutter project.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.18.6 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  image_picker: ^0.8.6
+  collection: ^1.16.0
+  image: ^3.2.2
+  path_provider: ^2.0.11
+  logger: ^1.1.0
+  tflite_flutter: ^0.9.0
+  tflite_flutter_helper:
+    git:
+      url: https://github.com/filofan1/tflite_flutter_helper.git
+      ref: 783f15e5a87126159147d8ea30b98eea9207ac70
+  url_launcher: ^6.1.11
+  page_transition: ^2.0.9
+  animated_splash_screen: ^1.3.0
+
+
+dev_dependencies:
+  flutter_lints: ^2.0.1
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+  fonts:
+    - family: SquadaOne
+      fonts:
+        - asset: assets/SquadaOne-Regular.ttf
+    - family: ContrailOne
+      fonts:
+        - asset: assets/ContrailOne-Regular.ttf
+    - family: Roboto
+      fonts:
+        - asset: assets/Roboto-Light.ttf
+
+  assets:
+    - assets/
