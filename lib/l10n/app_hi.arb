@@ -1,3 +1,13 @@
 {
-    "welcomeback": "वापसी पर स्वागत है! \n"
+    "ws_welcomeback": "वापसी पर स्वागत है! \n",
+    "ws_enterdetail": "लॉग इन करने के लिए अपना विवरण दर्ज करें\n या\n",
+    "ws_guestuser": "अतिथि उपयेागकर्ता",
+    "ws_signin": "दाखिल करना",
+    "ws_signup": "साइन अप करें",
+    "h1_takepic": "एक तस्वीर लें",
+    "h1_searchonnet": "इंटरनेट पर खोजें",
+    "h1_plantrec": "पौधे की पहचान",
+    "h1_noimageselected" : "कोई छवि चयनित नहीं.",
+    "h1_picgallery" : "गैलरी से चुनें",
+    "homeappbar_title_vrikshveda" : "वृक्षवेद"
 }

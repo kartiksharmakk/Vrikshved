@@ -1,3 +1,15 @@
 {
-    "welcomeback": "ਵਾਪਸ ਸੁਆਗਤ ਹੈ! \n"
+    "ws_welcomeback": "ਵਾਪਸ ਸੁਆਗਤ ਹੈ! \n",
+    "ws_enterdetail": "ਲੌਗ ਇਨ ਕਰਨ ਲਈ ਆਪਣੇ ਵੇਰਵੇ ਦਾਖਲ ਕਰੋ\n ਜਾਂ\n",
+    "ws_guestuser": "ਮਹਿਮਾਨ ਉਪਭੋਗਤਾ",
+    "ws_signin": "ਸਾਈਨ - ਇਨ",
+    "ws_signup": "ਸਾਇਨ ਅਪ",
+    "h1_takepic": "ਇੱਕ ਫੋਟੋ ਲਵੋ",
+    "h1_searchonnet": "ਇੰਟਰਨੈੱਟ 'ਤੇ ਖੋਜ ਕਰੋ",
+    "h1_plantrec": "ਪੌਦੇ ਦੀ ਮਾਨਤਾ",
+    "h1_noimageselected" : "ਕੋਈ ਚਿੱਤਰ ਨਹੀਂ ਚੁਣਿਆ ਗਿਆ।",
+    "h1_picgallery" : "ਗੈਲਰੀ ਤੋਂ ਚੁਣੋ",
+    "homeappbar_title_vrikshveda" : "ਵ੍ਰਿਕਸ਼ਵੇਦ"
+
+
 }
