@@ -17,5 +17,14 @@
     "ap_addsol" : "समाधान जोड़ें",
     "ap_enterdieasetitle" : "रोग शीर्षक दर्ज करें",
     "ap_title" : "शीर्षक",
-    "ap_enterdescr" : "विवरण/समाधान दर्ज करें"
+    "ap_enterdescr" : "विवरण/समाधान दर्ज करें",
+    "lg_welcomeback" : "वापसी पर स्वागत है",
+    "lg_email" : "ईमेल",
+    "lg_hintemail" : "ईमेल दर्ज करें",
+    "lg_pass" : "पासवर्ड",
+    "lg_hintpass" : "पासवर्ड दर्ज करें",
+    "lg_agreeprocessdata" : "डेटा संसाधित के लिए सहमत",
+    "lg_forgotpass" : "पासवर्ड भूल गए?",
+    "lg_sgupwith" : "साइन अप करें",
+    "lg_donthaveacc" : "क्या आपके पास खाता नहीं है?"
 }

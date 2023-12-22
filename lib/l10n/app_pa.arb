@@ -17,7 +17,16 @@
     "ap_addsol" : "ਹੱਲ ਸ਼ਾਮਲ ਕਰੋ",
     "ap_enterdieasetitle" : "ਬਿਮਾਰੀ ਦਾ ਸਿਰਲੇਖ ਦਰਜ ਕਰੋ",
     "ap_title" : "ਸਿਰਲੇਖ",
-    "ap_enterdescr" : "ਵਰਣਨ/ਹੱਲ ਦਰਜ ਕਰੋ"
+    "ap_enterdescr" : "ਵਰਣਨ/ਹੱਲ ਦਰਜ ਕਰੋ",
+    "lg_welcomeback" : "ਵਾਪਸ ਸੁਆਗਤ ਹੈ",
+    "lg_email" : "ਈਮੇਲ",
+    "lg_hintemail" : "ਈਮੇਲ ਦਰਜ ਕਰੋ",
+    "lg_pass" : "ਪਾਸਵਰਡ",
+    "lg_hintpass" : "ਪਾਸਵਰਡ ਦਰਜ ਕਰੋ",
+    "lg_agreeprocessdata" : "ਡੇਟਾ ਪ੍ਰਕਿਰਿਆ ਕਰਨ ਲਈ ਸਹਿਮਤ",
+    "lg_forgotpass" : "ਪਾਸਵਰਡ ਭੁੱਲ ਗਏ ਹੋ?",
+    "lg_sgupwith" : "ਸਾਈਨ ਅੱਪ ਕਰੋ",
+    "lg_donthaveacc" : "ਕੀ ਕੋਈ ਖਾਤਾ ਨਹੀਂ ਹੈ?"
 
 
 }

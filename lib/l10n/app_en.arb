@@ -17,5 +17,14 @@
     "ap_addsol" : "Add Solution",
     "ap_enterdieasetitle" : "Enter Disease Title",
     "ap_title" : "Title",
-    "ap_enterdescr" : "Enter the Description/Solution"
+    "ap_enterdescr" : "Enter the Description/Solution",
+    "lg_welcomeback" : "Welcome Back",
+    "lg_email" : "Email",
+    "lg_hintemail" : "Enter Email",
+    "lg_pass" : "Password",
+    "lg_hintpass" : "Enter Password",
+    "lg_agreeprocessdata" : "Agree to process data",
+    "lg_forgotpass" : "Forget password?",
+    "lg_sgupwith" : "Sign Up With",
+    "lg_donthaveacc" : "Don't have an account?"
 }
