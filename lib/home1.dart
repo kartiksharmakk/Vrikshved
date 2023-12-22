@@ -90,32 +90,6 @@ class _MyHomePageState extends State<MyHomePage> {
       ],
     );
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          Consumer<LanguageChangeController>(
-              builder: (context, provider, child) {
-            return PopupMenuButton(
-                onSelected: (Language item) {
-                  if (Language.english.name == item.name) {
-                    provider.changeLanguage(Locale('en'));
-                  } else if (Language.hindi.name == item.name) {
-                    provider.changeLanguage(Locale('hi'));
-                  } else if (Language.punjabi.name == item.name) {
-                    provider.changeLanguage(Locale('pa'));
-                  }
-                },
-                itemBuilder: (BuildContext contex) =>
-                    <PopupMenuEntry<Language>>[
-                      const PopupMenuItem(
-                          value: Language.english, child: Text("ENGLISH")),
-                      const PopupMenuItem(
-                          value: Language.hindi, child: Text("HINDI")),
-                      const PopupMenuItem(
-                          value: Language.punjabi, child: Text("PUNJABI"))
-                    ]);
-          })
-        ],
-      ),
       body: ListView(
         children: [
           HomeAppBar(),
