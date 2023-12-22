@@ -9,7 +9,15 @@
     "h1_plantrec": "ਪੌਦੇ ਦੀ ਮਾਨਤਾ",
     "h1_noimageselected" : "ਕੋਈ ਚਿੱਤਰ ਨਹੀਂ ਚੁਣਿਆ ਗਿਆ।",
     "h1_picgallery" : "ਗੈਲਰੀ ਤੋਂ ਚੁਣੋ",
-    "homeappbar_title_vrikshveda" : "ਵ੍ਰਿਕਸ਼ਵੇਦ"
+    "homeappbar_title_vrikshveda" : "ਵ੍ਰਿਕਸ਼ਵੇਦ",
+    "pr_dieasedetection" : "ਰੋਗ ਖੋਜ",
+    "post_expertsolutions" : "ਮਾਹਰ ਦੇ ਹੱਲ",
+    "post_solutions" : "ਹੱਲ",
+    "ap_solprovbyyou" : "ਤੁਹਾਡੇ ਦੁਆਰਾ ਪ੍ਰਦਾਨ ਕੀਤੇ ਗਏ ਹੱਲ",
+    "ap_addsol" : "ਹੱਲ ਸ਼ਾਮਲ ਕਰੋ",
+    "ap_enterdieasetitle" : "ਬਿਮਾਰੀ ਦਾ ਸਿਰਲੇਖ ਦਰਜ ਕਰੋ",
+    "ap_title" : "ਸਿਰਲੇਖ",
+    "ap_enterdescr" : "ਵਰਣਨ/ਹੱਲ ਦਰਜ ਕਰੋ"
 
 
 }

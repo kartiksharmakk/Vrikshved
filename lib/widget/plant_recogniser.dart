@@ -9,7 +9,7 @@ import '../classifier/classifier.dart';
 import '../styles.dart';
 import 'HomeAppBar.dart';
 import 'plant_photo_view.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 //const _labelsFileName = 'assets/labels.txt';
 //const _modelFileName = 'model_unquant.tflite';
@@ -61,46 +61,42 @@ class _PlantRecogniserState extends State<PlantRecogniser> {
     _classifier = classifier!;
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body:ListView(
+      body: ListView(
         // mainAxisSize: MainAxisSize.max,
         children: [
           const HomeAppBar(),
           Container(
             padding: const EdgeInsets.only(top: 10),
             decoration: const BoxDecoration(
-              color: Color(0xFFEDECF2),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(35),
-                topRight: Radius.circular(35),
-              )
-            ),
+                color: Color(0xFFEDECF2),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(35),
+                  topRight: Radius.circular(35),
+                )),
             child: Container(
               width: double.infinity,
               margin: const EdgeInsets.symmetric(horizontal: 15),
               padding: const EdgeInsets.symmetric(horizontal: 10),
               decoration: BoxDecoration(
-                  // color: const Color(0xFFE9E9DE),
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(30),
-                  // border: Border.all(
-                  //     width: 5,
-                  //     color: const Color(0x9145BF1D)
-                  // )
+                // color: const Color(0xFFE9E9DE),
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(30),
+                // border: Border.all(
+                //     width: 5,
+                //     color: const Color(0x9145BF1D)
+                // )
               ),
               child: Column(
                 children: [
                   Container(
                     alignment: Alignment.center,
                     margin: const EdgeInsets.symmetric(
-                        vertical: 20,
-                        horizontal: 10
-                    ),
-                    child: const Text(
-                      'Disease Detection',
+                        vertical: 20, horizontal: 10),
+                    child: Text(
+                      AppLocalizations.of(context)!.pr_dieasedetection,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 25,
@@ -122,28 +118,24 @@ class _PlantRecogniserState extends State<PlantRecogniser> {
             height: 20,
           ),
           _buildPickPhotoButton(
-            titleval: 'Take a photo',
-            source: ImageSource.camera,
-            iconval: Icons.add_a_photo
-          ),
+              titleval: AppLocalizations.of(context)!.h1_takepic,
+              source: ImageSource.camera,
+              iconval: Icons.add_a_photo),
           _buildPickPhotoButton(
-            titleval: 'Pick from gallery',
-            source: ImageSource.gallery,
-            iconval: Icons.photo
-          ),
+              titleval: AppLocalizations.of(context)!.h1_picgallery,
+              source: ImageSource.gallery,
+              iconval: Icons.photo),
           Container(
             height: 20,
-            decoration:const BoxDecoration(
-              color: Color(0xFFEDECF2),
-              borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(30),
-                  bottomRight: Radius.circular(30)
-              )
-            ),
+            decoration: const BoxDecoration(
+                color: Color(0xFFEDECF2),
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(30),
+                    bottomRight: Radius.circular(30))),
           )
           // const Spacer(flex: ,),
         ],
-          ),
+      ),
     );
   }
 
@@ -164,11 +156,10 @@ class _PlantRecogniserState extends State<PlantRecogniser> {
     return const Text('Analyzing...', style: kAnalyzingTextStyle);
   }
 
-  Widget _buildPickPhotoButton({
-    required ImageSource source,
-    required String titleval,
-    required IconData iconval
-  }) {
+  Widget _buildPickPhotoButton(
+      {required ImageSource source,
+      required String titleval,
+      required IconData iconval}) {
     return Container(
       color: const Color(0xFFEDECF2),
       child: GestureDetector(
@@ -183,24 +174,20 @@ class _PlantRecogniserState extends State<PlantRecogniser> {
             ),
             // color: const Color(0xFF45BF1D),
             color: const Color(0xFF4C53A5),
-            margin: const EdgeInsets.symmetric(
-                vertical: 10,
-                horizontal: 30
-            ),
+            margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
             child: ListTile(
               leading: Icon(
                 iconval,
-                color: Colors.white,),
+                color: Colors.white,
+              ),
               title: Text(
                 titleval,
                 style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
-                    fontSize: 20
-                ),
+                    fontSize: 20),
               ),
-            )
-        ),
+            )),
       ),
     );
   }
@@ -257,7 +244,8 @@ class _PlantRecogniserState extends State<PlantRecogniser> {
     );
     AlertDialog alert = AlertDialog(
       title: const Text("Wrong Input"),
-      content: const Text("There is no image of plant. Please choose the image again."),
+      content: const Text(
+          "There is no image of plant. Please choose the image again."),
       actions: [
         okButton,
       ],
@@ -284,27 +272,29 @@ class _PlantRecogniserState extends State<PlantRecogniser> {
         const SizedBox(height: 10),
         Text(accuracyLabel, style: kResultRatingTextStyle),
         GestureDetector(
-          onTap: (){
-            String b='https://www.google.com/search?q=$title';
-            if(title!=''){
+          onTap: () {
+            String b = 'https://www.google.com/search?q=$title';
+            if (title != '') {
               showDialog(
                   context: context,
                   builder: (BuildContext context) {
                     return AlertDialog(
                       title: const Icon(Icons.travel_explore_outlined),
-                      content: const Text("Are you sure you want to open google for search."),
+                      content: const Text(
+                          "Are you sure you want to open google for search."),
                       actions: [
                         TextButton(
                           child: const Text("Cancel"),
                           onPressed: () {
-                            Navigator.of(context, rootNavigator: true).pop('dialog');
+                            Navigator.of(context, rootNavigator: true)
+                                .pop('dialog');
                           },
                         ),
                         TextButton(
                           child: const Text("OK"),
                           onPressed: () {
                             setState(() {
-                              if (title==''){
+                              if (title == '') {
                                 // print("hey");
                                 showDialog(
                                   context: context,
@@ -312,12 +302,13 @@ class _PlantRecogniserState extends State<PlantRecogniser> {
                                     return alert;
                                   },
                                 );
-                              }else {
+                              } else {
                                 final Uri a = Uri.parse(b);
                                 launchUrl(a);
                               }
                             });
-                            Navigator.of(context, rootNavigator: true).pop('dialog');
+                            Navigator.of(context, rootNavigator: true)
+                                .pop('dialog');
                           },
                         ),
                       ],
@@ -325,34 +316,29 @@ class _PlantRecogniserState extends State<PlantRecogniser> {
                   });
             }
           },
-          child:Card(
+          child: Card(
               elevation: 5,
               shape: RoundedRectangleBorder(
                 side: const BorderSide(
                   color: Color(0xFF4C53A5),
                 ),
                 borderRadius: BorderRadius.circular(20.0),
-
               ),
               color: const Color(0xFF4C53A5),
-              margin: const EdgeInsets.symmetric(
-                  vertical: 10,
-                  horizontal: 30
-              ),
-              child: const ListTile(
+              margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
+              child: ListTile(
                 leading: Icon(
                   Icons.search,
-                  color: Colors.white,),
+                  color: Colors.white,
+                ),
                 title: Text(
-                  "Search on Internet",
+                  AppLocalizations.of(context)!.h1_searchonnet,
                   style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
-                      fontSize: 20
-                  ),
+                      fontSize: 20),
                 ),
-              )
-          ),
+              )),
         ),
       ],
     );

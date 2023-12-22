@@ -9,5 +9,13 @@
     "h1_plantrec": "Plant Recognition",
     "h1_noimageselected" : "No image selected.",
     "h1_picgallery" : "Pick from Gallery",
-    "homeappbar_title_vrikshveda" : "Vrikshveda"
+    "homeappbar_title_vrikshveda" : "Vrikshveda",
+    "pr_dieasedetection" : "Disease Detection",
+    "post_expertsolutions" : "Expert's Solutions",
+    "post_solutions" : "Solutions",
+    "ap_solprovbyyou" : "Solutions Provided by you",
+    "ap_addsol" : "Add Solution",
+    "ap_enterdieasetitle" : "Enter Disease Title",
+    "ap_title" : "Title",
+    "ap_enterdescr" : "Enter the Description/Solution"
 }

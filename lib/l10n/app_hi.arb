@@ -9,5 +9,13 @@
     "h1_plantrec": "पौधे की पहचान",
     "h1_noimageselected" : "कोई छवि चयनित नहीं.",
     "h1_picgallery" : "गैलरी से चुनें",
-    "homeappbar_title_vrikshveda" : "वृक्षवेद"
+    "homeappbar_title_vrikshveda" : "वृक्षवेद",
+    "pr_dieasedetection" : "रोग का पता लगाना",
+    "post_expertsolutions" : "विशेषज्ञ के समाधान",
+    "post_solutions" : "समाधान",
+    "ap_solprovbyyou" : "आपके द्वारा उपलब्ध कराये गये समाधान",
+    "ap_addsol" : "समाधान जोड़ें",
+    "ap_enterdieasetitle" : "रोग शीर्षक दर्ज करें",
+    "ap_title" : "शीर्षक",
+    "ap_enterdescr" : "विवरण/समाधान दर्ज करें"
 }

@@ -4,6 +4,8 @@ import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:plant_rec/Utils/utils.dart';
 import 'package:plant_rec/widget/HomeAppBar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class Post extends StatefulWidget {
   const Post({super.key});
 
@@ -13,14 +15,14 @@ class Post extends StatefulWidget {
 
 class _PostState extends State<Post> {
   final search = TextEditingController();
-  final ref=FirebaseDatabase.instance.ref('data');
+  final ref = FirebaseDatabase.instance.ref('data');
 
-  bool check(){
-    final auth =FirebaseAuth.instance;
-    final user=auth.currentUser;
-    bool guest=false;
-    if(user==null){
-      guest=true;
+  bool check() {
+    final auth = FirebaseAuth.instance;
+    final user = auth.currentUser;
+    bool guest = false;
+    if (user == null) {
+      guest = true;
     }
     return guest;
   }
@@ -28,28 +30,25 @@ class _PostState extends State<Post> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton:check()?Container(): Utils().areyouexpert(),
-      body:ListView(
+      floatingActionButton: check() ? Container() : Utils().areyouexpert(),
+      body: ListView(
         children: [
           const HomeAppBar(),
           Container(
             padding: const EdgeInsets.only(top: 10),
-            height: MediaQuery.of(context).size.height/1.33,
+            height: MediaQuery.of(context).size.height / 1.33,
             decoration: const BoxDecoration(
                 color: Color(0xFFEDECF2),
-                borderRadius: BorderRadius.all(Radius.circular(35))
-            ),
+                borderRadius: BorderRadius.all(Radius.circular(35))),
             child: Expanded(
               child: Column(
                 children: [
                   Container(
                     alignment: Alignment.center,
                     margin: const EdgeInsets.symmetric(
-                        vertical: 20,
-                        horizontal: 10
-                    ),
-                    child: const Text(
-                      "Expert's Solutions",
+                        vertical: 20, horizontal: 10),
+                    child: Text(
+                      AppLocalizations.of(context)!.post_expertsolutions,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 25,
@@ -58,18 +57,16 @@ class _PostState extends State<Post> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20.0),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 20.0),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10)
-                      ),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10)),
                       child: TextFormField(
                         controller: search,
-                        onChanged: (String val){
-                          setState(() {
-
-                          });
+                        onChanged: (String val) {
+                          setState(() {});
                         },
                         decoration: InputDecoration(
                           label: Row(
@@ -83,30 +80,23 @@ class _PostState extends State<Post> {
                             color: Colors.black26,
                           ),
                           border: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                  color: Colors.black12
-                              ),
-                              borderRadius: BorderRadius.circular(10)
-                          ),
+                              borderSide:
+                                  const BorderSide(color: Colors.black12),
+                              borderRadius: BorderRadius.circular(10)),
                           enabledBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                  color: Colors.black12
-                              ),
-                              borderRadius: BorderRadius.circular(10)
-                          ),
+                              borderSide:
+                                  const BorderSide(color: Colors.black12),
+                              borderRadius: BorderRadius.circular(10)),
                         ),
-
                       ),
                     ),
                   ),
                   Container(
                     alignment: Alignment.center,
                     margin: const EdgeInsets.symmetric(
-                        vertical: 20,
-                        horizontal: 10
-                    ),
-                    child: const Text(
-                      "Solutions",
+                        vertical: 20, horizontal: 10),
+                    child: Text(
+                      AppLocalizations.of(context)!.post_solutions,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 25,
@@ -115,126 +105,127 @@ class _PostState extends State<Post> {
                     ),
                   ),
                   Expanded(
-                      child:FirebaseAnimatedList(
-                        defaultChild: Column(
-                          children: const [
-                            SizedBox(height: 20,),
-                            CircularProgressIndicator(),
-                            Text("Loading")
-                          ],
+                      child: FirebaseAnimatedList(
+                    defaultChild: Column(
+                      children: const [
+                        SizedBox(
+                          height: 20,
                         ),
-                        query: ref,
-                        itemBuilder: (context,snapshot,animation,index) {
-                          final title =snapshot.child('title').value.toString();
-                          if(search.text.isEmpty){
-                            return ListTile(
-                              title: Container(
-                                width: double.infinity,
-                                margin: const EdgeInsets.symmetric(horizontal: 15,vertical: 8),
-                                padding: const EdgeInsets.symmetric(horizontal: 10),
-                                decoration: BoxDecoration(
-                                  // color: const Color(0xFFE9E9DE),
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(15),
-                                  // border: Border.all(
-                                  //     width: 5,
-                                  //     color: const Color(0x9145BF1D)
-                                  // )
+                        CircularProgressIndicator(),
+                        Text("Loading")
+                      ],
+                    ),
+                    query: ref,
+                    itemBuilder: (context, snapshot, animation, index) {
+                      final title = snapshot.child('title').value.toString();
+                      if (search.text.isEmpty) {
+                        return ListTile(
+                          title: Container(
+                            width: double.infinity,
+                            margin: const EdgeInsets.symmetric(
+                                horizontal: 15, vertical: 8),
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            decoration: BoxDecoration(
+                              // color: const Color(0xFFE9E9DE),
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(15),
+                              // border: Border.all(
+                              //     width: 5,
+                              //     color: const Color(0x9145BF1D)
+                              // )
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    snapshot.child('title').value.toString(),
+                                    style: const TextStyle(
+                                        fontSize: 30,
+                                        fontWeight: FontWeight.bold,
+                                        color: Color(0xFF4C53A5)),
+                                  ),
                                 ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        snapshot.child('title').value.toString(),
-                                        style: const TextStyle(
-                                            fontSize: 30,
-                                            fontWeight: FontWeight.bold,
-                                            color: Color(0xFF4C53A5)
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(bottom: 8.0),
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            snapshot.child('desc').value.toString(),
-                                            style: const TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.black45
-                                            ),
-                                          ),
-                                          const SizedBox(height: 7.5,),
-                                          Text(
-                                              "by- ${snapshot.child('email').value}",
-                                          style: const TextStyle(
-                                            fontWeight: FontWeight.w100,
-                                            fontSize: 15
-                                          ),)
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            );
-                          }
-                          else if(title.toLowerCase().contains(search.text.toString().toLowerCase())){
-                            return ListTile(
-                              title: Container(
-                                width: double.infinity,
-                                margin: const EdgeInsets.symmetric(horizontal: 15),
-                                padding: const EdgeInsets.symmetric(horizontal: 10),
-                                decoration: BoxDecoration(
-                                  // color: const Color(0xFFE9E9DE),
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(15),
-                                  // border: Border.all(
-                                  //     width: 5,
-                                  //     color: const Color(0x9145BF1D)
-                                  // )
-                                ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        snapshot.child('title').value.toString(),
-                                        style: const TextStyle(
-                                            fontSize: 30,
-                                            fontWeight: FontWeight.bold,
-                                            color: Color(0xFF4C53A5)
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(bottom: 8.0),
-                                      child: Text(
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 8.0),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
                                         snapshot.child('desc').value.toString(),
                                         style: const TextStyle(
-                                            fontSize: 15,
+                                            fontSize: 20,
                                             fontWeight: FontWeight.bold,
-                                            color: Colors.black45
-                                        ),
+                                            color: Colors.black45),
                                       ),
-                                    ),
-                                  ],
+                                      const SizedBox(
+                                        height: 7.5,
+                                      ),
+                                      Text(
+                                        "by- ${snapshot.child('email').value}",
+                                        style: const TextStyle(
+                                            fontWeight: FontWeight.w100,
+                                            fontSize: 15),
+                                      )
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            );
-                          }else{
-
-                            return Container();
-                          }
-                        },
-                      )
-                  )
+                              ],
+                            ),
+                          ),
+                        );
+                      } else if (title
+                          .toLowerCase()
+                          .contains(search.text.toString().toLowerCase())) {
+                        return ListTile(
+                          title: Container(
+                            width: double.infinity,
+                            margin: const EdgeInsets.symmetric(horizontal: 15),
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            decoration: BoxDecoration(
+                              // color: const Color(0xFFE9E9DE),
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(15),
+                              // border: Border.all(
+                              //     width: 5,
+                              //     color: const Color(0x9145BF1D)
+                              // )
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    snapshot.child('title').value.toString(),
+                                    style: const TextStyle(
+                                        fontSize: 30,
+                                        fontWeight: FontWeight.bold,
+                                        color: Color(0xFF4C53A5)),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 8.0),
+                                  child: Text(
+                                    snapshot.child('desc').value.toString(),
+                                    style: const TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black45),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      } else {
+                        return Container();
+                      }
+                    },
+                  ))
                 ],
               ),
             ),

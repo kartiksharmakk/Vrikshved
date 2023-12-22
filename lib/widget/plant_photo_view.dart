@@ -1,5 +1,3 @@
-
-
 import 'dart:io';
 import 'package:flutter/material.dart';
 
@@ -13,13 +11,11 @@ class PlantPhotoView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       constraints: BoxConstraints(
-          maxHeight: file==null? 70 :MediaQuery.of(context).size.height / 2.5),
+          maxHeight:
+              file == null ? 70 : MediaQuery.of(context).size.height / 2.5),
       decoration: BoxDecoration(
-          border: Border.all(
-              width: file==null? 0:2,
-              color: Colors.black),
-          borderRadius: BorderRadius.circular(5)
-      ),
+          border: Border.all(width: file == null ? 0 : 2, color: Colors.black),
+          borderRadius: BorderRadius.circular(5)),
       child: (file == null)
           ? _buildEmptyView()
           : Image.file(file!, fit: BoxFit.cover),
