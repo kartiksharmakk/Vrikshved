@@ -5,8 +5,6 @@ import 'Auth/Login.dart';
 import 'theme/theme.dart';
 import 'Auth/Signup.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:plant_rec/Controller/language_change_controller.dart';
-import 'package:provider/provider.dart';
 
 class Div extends StatelessWidget {
   const Div({Key? key}) : super(key: key);
@@ -108,11 +106,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       textAlign: TextAlign.center,
                       text: TextSpan(children: [
                         TextSpan(
-                            text: AppLocalizations.of(context)!.welcomeback,
+                            text: AppLocalizations.of(context)!.ws_welcomeback,
                             style: TextStyle(
                                 fontWeight: FontWeight.w600, fontSize: 45)),
                         TextSpan(
-                            text: "Enter Your Details to log in\n OR\n",
+                            text: AppLocalizations.of(context)!.ws_enterdetail,
                             style: TextStyle(fontSize: 20)),
                       ]),
                     ),
@@ -125,7 +123,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             color: Colors.white),
-                        child: const Text("Guest User",
+                        child: Text(AppLocalizations.of(context)!.ws_guestuser,
                             style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
@@ -143,16 +141,16 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 alignment: Alignment.bottomRight,
                 child: Row(
                   children: [
-                    const Expanded(
+                    Expanded(
                         child: WelcomeButton(
-                      text: "Sign In",
+                      text: AppLocalizations.of(context)!.ws_signin,
                       ontap: Login(),
                       clr: Colors.transparent,
                       txtclr: Colors.white,
                     )),
                     Expanded(
                         child: WelcomeButton(
-                      text: "Sign Up",
+                      text: AppLocalizations.of(context)!.ws_signup,
                       ontap: Signup(),
                       clr: Colors.white,
                       txtclr: lightColorScheme.primary,

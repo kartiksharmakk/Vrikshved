@@ -1,3 +1,13 @@
 {
-    "welcomeback": "Welcome Back! \n"
+    "ws_welcomeback": "Welcome Back! \n",
+    "ws_enterdetail": "Enter Your Details to log in\n OR\n",
+    "ws_guestuser": "Guest User",
+    "ws_signin": "Sign In",
+    "ws_signup": "Sign Up",
+    "h1_takepic": "Take a Photo",
+    "h1_searchonnet": "Search on Internet",
+    "h1_plantrec": "Plant Recognition",
+    "h1_noimageselected" : "No image selected.",
+    "h1_picgallery" : "Pick from Gallery",
+    "homeappbar_title_vrikshveda" : "Vrikshveda"
 }
