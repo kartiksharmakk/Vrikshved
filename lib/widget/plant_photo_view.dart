@@ -13,10 +13,10 @@ class PlantPhotoView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       constraints: BoxConstraints(
-          maxHeight: MediaQuery.of(context).size.height / 2.5),
+          maxHeight: file==null? 70 :MediaQuery.of(context).size.height / 2.5),
       decoration: BoxDecoration(
           border: Border.all(
-              width: 2,
+              width: file==null? 0:2,
               color: Colors.black),
           borderRadius: BorderRadius.circular(5)
       ),

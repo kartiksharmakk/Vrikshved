@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'widget/Custom_Scaffold.dart';
+import 'widget/Welcome_Button.dart';
+import 'Auth/Login.dart';
+import 'theme/theme.dart';
+import 'Auth/Signup.dart';
 
 class Div extends StatelessWidget {
   const Div({Key? key}) : super(key: key);
@@ -80,6 +85,110 @@ class Div extends StatelessWidget {
             ),
           ),
         ),
+    );
+  }
+}
+
+
+
+class WelcomeScreen extends StatefulWidget {
+  const WelcomeScreen({super.key});
+
+  @override
+  _WelcomeScreenState createState() => _WelcomeScreenState();
+}
+
+class _WelcomeScreenState extends State<WelcomeScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Custom_Scaffold(
+      child: Column(
+        children: [
+          Flexible(
+            child: Container(
+              padding: const EdgeInsets.symmetric(
+                vertical: 0,
+                horizontal: 40
+              ),
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    RichText(
+                      textAlign: TextAlign.center,
+                      text: const TextSpan(
+                        children: [
+                          TextSpan(
+                          text: 'Welcome Back! \n',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 45
+                              )
+                        ),
+                          TextSpan(
+                            text: "Enter Your Details to log in\n OR\n",
+                              style: TextStyle(
+                                  fontSize: 20
+                              )
+                          ),
+                        ]
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap:(){
+                        Navigator.pushNamed(context, '/dash');
+                      },
+                        child:Container(
+                          padding: const EdgeInsets.all(10),
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(10)
+                            ),
+                            color: Colors.white
+                          ),
+                          child: const Text(
+                              "Guest User",
+                              style: TextStyle(
+                                  fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFF5A73B3)
+                              )
+                          ),
+                        ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Flexible(
+            flex: 0,
+              child: Align(
+                alignment: Alignment.bottomRight,
+                child: Row(
+                  children: [
+                    const Expanded(
+                        child: WelcomeButton(
+                          text: "Sign In",
+                          ontap: Login(),
+                          clr: Colors.transparent,
+                          txtclr: Colors.white,
+                        )
+                    ),
+                    Expanded(
+                        child: WelcomeButton(
+                          text: "Sign Up",
+                          ontap: Signup(),
+                          clr: Colors.white,
+                          txtclr: lightColorScheme.primary,
+                        )
+                    ),
+                  ],
+                ),
+              )
+          )
+        ],
+      ),
     );
   }
 }

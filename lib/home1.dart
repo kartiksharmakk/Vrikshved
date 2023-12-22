@@ -1,5 +1,6 @@
 import 'package:image_picker/image_picker.dart';
 import 'package:logger/logger.dart';
+import 'package:plant_rec/widget/HomeAppBar.dart';
 import 'package:tflite_flutter_helper/tflite_flutter_helper.dart';
 import 'dart:io';
 import 'package:image/image.dart' as img;
@@ -68,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    bool? _val;
+    // bool? _val;
     Widget okButton = TextButton(
       child: const Text("OK"),
       onPressed: () {
@@ -83,43 +84,50 @@ class _MyHomePageState extends State<MyHomePage> {
       ],
     );
     return Scaffold(
-      appBar: AppBar(
-        title:
-        const Center(
-          child: Text(
-              'Plant Recognition',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.white,
-                fontFamily: 'Roboto',
-                fontWeight: FontWeight.w900,
-              )
-          ),
-        ),
-      ),
-      body: Container(
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("assets/1.jpg"),
-                fit: BoxFit.cover
-            )
-        ),
-        child: Expanded(
-          child: Column(
+      body: ListView(
+        children: [
+          HomeAppBar(),
+          Container(
+            padding: const EdgeInsets.only(top: 10),
+            decoration: const BoxDecoration(
+                color: Color(0xFFEDECF2),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(35)
+                )
+            ),
+            child: Column(
             children: <Widget>[
               Container(
-                margin: const EdgeInsets.all(15),
-                padding: const EdgeInsets.all(10),
+                width: double.infinity,
+                margin: const EdgeInsets.symmetric(horizontal: 15),
+                padding: const EdgeInsets.symmetric(horizontal: 10),
                 decoration: BoxDecoration(
-                    color: const Color(0x882F6847)
-                    ,borderRadius: BorderRadius.circular(10),
-                    // border: Border.all(
-                    //     width: 5,
-                    //     color: const Color(0x7345BF1D)
-                    // )
+                  // color: const Color(0xFFE9E9DE),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(30),
+                  // border: Border.all(
+                  //     width: 5,
+                  //     color: const Color(0x9145BF1D)
+                  // )
                 ),
                 child: Column(
                   children: [
+                    Container(
+                      alignment: Alignment.center,
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 20,
+                          horizontal: 10
+                      ),
+                      child: const Text(
+                        'Plant Recognition',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25,
+                          color: Color(0xFF4C53A5),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
                     Center(
                       child: _image == null
                           ? const Text(
@@ -140,7 +148,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     Text(
                       category != null ? category!.label : 'No image selected.',
-                      style: const TextStyle(color: Colors.white,fontSize: 20, fontWeight: FontWeight.w600),
+                      style: const TextStyle(color: Color(0xFF4C53A5),fontSize: 20, fontWeight: FontWeight.w600),
                     ),
                     const SizedBox(
                       height: 8,
@@ -150,13 +158,14 @@ class _MyHomePageState extends State<MyHomePage> {
                           ? 'Confidence: ${(category!.score * 100).toInt()} %'
                           : '',
                       style: const TextStyle(
-                          color: Colors.white,
+                          color: Color(0xFF4C53A5),
                           fontSize: 16
                       ),
                     ),
                     // const SizedBox(
                     //   height: 8,
                     // ),
+                    const SizedBox(height: 20),
                     GestureDetector(
                       onTap: (){
                         String b='https://www.google.com/search?q=${category!.label}';
@@ -204,12 +213,12 @@ class _MyHomePageState extends State<MyHomePage> {
                           elevation: 5,
                           shape: RoundedRectangleBorder(
                             side: const BorderSide(
-                              color: Colors.greenAccent,
+                                color: Color(0xFF4C53A5)
                             ),
                             borderRadius: BorderRadius.circular(20.0),
 
                           ),
-                          color: const Color(0xFF112425),
+                          color: Color(0xFF4C53A5),
                           margin: const EdgeInsets.symmetric(
                               vertical: 10,
                               horizontal: 30
@@ -219,7 +228,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               Icons.search,
                               color: Colors.white,),
                             title: Text(
-                              "Search",
+                              "Search on Internet",
                               style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
@@ -229,21 +238,23 @@ class _MyHomePageState extends State<MyHomePage> {
                           )
                       ),
                     ),
+                    const SizedBox(height: 10),
                   ],
                 ),
               ),
+              const SizedBox(height: 20),
               GestureDetector(
                 onTap: getImage,
                 child: Card(
                   elevation: 5,
                     shape: RoundedRectangleBorder(
                       side: const BorderSide(
-                        color: Colors.greenAccent,
+                        color: Color(0xFF4C53A5),
                       ),
                       borderRadius: BorderRadius.circular(20.0),
 
                     ),
-                    color: const Color(0x002F6847),
+                    color: Color(0xFF4C53A5),
                     margin: const EdgeInsets.symmetric(
                         vertical: 10,
                         horizontal: 30
@@ -253,7 +264,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         Icons.add_a_photo,
                         color: Colors.white,),
                       title: Text(
-                        "Add from Camera",
+                        "Take a Photo",
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -269,12 +280,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   elevation: 5,
                     shape: RoundedRectangleBorder(
                       side: const BorderSide(
-                        color: Colors.greenAccent,
+                        color: Color(0xFF4C53A5),
                       ),
                       borderRadius: BorderRadius.circular(20.0), //<-- SEE HERE
                     ),
                     // color: const Color(0xFF45BF1D)
-                    color: const Color(0x002F6847),
+                    color: Color(0xFF4C53A5),
                     margin: const EdgeInsets.symmetric(
                         vertical: 10,
                         horizontal: 30
@@ -284,7 +295,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         Icons.photo,
                         color: Colors.white,),
                       title: Text(
-                        "Add from Gallery",
+                        "Pick from Gallery",
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -294,9 +305,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     )
                 ),
               ),
+              const SizedBox(height: 20),
             ],
-          ),
         ),
+          )],
       ),
 
     );

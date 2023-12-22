@@ -25,24 +25,24 @@ const kBgColor = kColorGreen;
 const kTitleTextStyle = TextStyle(
   fontFamily: kDisplayFont,
   fontSize: 40.0,
-  color: Colors.white,
+  color: Color(0xFF4C53A5),
   decoration: TextDecoration.none,
 );
 
 const kAnalyzingTextStyle = TextStyle(
     fontFamily: kMainFont,
     fontSize: 25.0,
-    color: Colors.white,
+    color: Color(0xFF4C53A5),
     decoration: TextDecoration.none);
 
 const kResultTextStyle = TextStyle(
     fontFamily: kDisplayFont,
     fontSize: 30.0,
-    color: Colors.white,
+    color: Color(0xFF4C53A5),
     decoration: TextDecoration.none);
 
 const kResultRatingTextStyle = TextStyle(
     fontFamily: kMainFont,
     fontSize: 18.0,
-    color: Colors.white,
+    color: Color(0xFF4C53A5),
     decoration: TextDecoration.none);
