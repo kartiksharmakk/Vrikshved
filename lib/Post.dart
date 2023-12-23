@@ -70,12 +70,12 @@ class _PostState extends State<Post> {
                         },
                         decoration: InputDecoration(
                           label: Row(
-                            children: const [
+                            children: [
                               Icon(Icons.search),
-                              Text("Search"),
+                              Text(AppLocalizations.of(context)!.post_search),
                             ],
                           ),
-                          hintText: "Search",
+                          hintText: AppLocalizations.of(context)!.post_search,
                           hintStyle: const TextStyle(
                             color: Colors.black26,
                           ),

@@ -8,6 +8,7 @@ import '../widget/Custom_Scaffold.dart';
 import 'package:plant_rec/theme/theme.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -22,15 +23,15 @@ class _SignupState extends State<Signup> {
   bool type = false;
   final emailcontroller = TextEditingController();
   final passwordcontroller = TextEditingController();
-  final name=TextEditingController();
+  final name = TextEditingController();
 
   final databaseref = FirebaseDatabase.instance.ref('login');
 
-  FirebaseAuth _auth=FirebaseAuth.instance;
-  final FirebaseFirestore _firestore=FirebaseFirestore.instance;
+  FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   String? validateEmail(String? value) {
-    if(value == null || value.isEmpty){
+    if (value == null || value.isEmpty) {
       return "Please Enter Your Email";
     }
     const pattern = r"(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'"
@@ -47,59 +48,57 @@ class _SignupState extends State<Signup> {
         : null;
   }
 
-  bool loading=false;
+  bool loading = false;
 
-  void signup(){
-    if (_formSignupKey.currentState!.validate() &&
-        agreePersonalData) {
+  void signup() {
+    if (_formSignupKey.currentState!.validate() && agreePersonalData) {
       setState(() {
-        loading=true;
+        loading = true;
       });
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Processing Data'),
+        SnackBar(
+          content: Text(AppLocalizations.of(context)!.sg_processingdata),
         ),
       );
-      _auth.createUserWithEmailAndPassword(
-          email: emailcontroller.text.toString(),
-          password: passwordcontroller.text.toString()).then(
-              (value) async {
-            setState(() {
-              loading=false;
-            });
-            final id=DateTime.now().millisecondsSinceEpoch.toString();
-            databaseref.child(id).set({
-              'id':id,
-              'email' : emailcontroller.text.toString(),
-              'name' : name.text.toString(),
-              'type' : type?"Expert":"User"
-            }).then((value){
-              Utils().toastmessage("Go back to login Button");
-            }).onError((error, stackTrace){
-              Utils().toastmessage(error.toString());
-            });
+      _auth
+          .createUserWithEmailAndPassword(
+              email: emailcontroller.text.toString(),
+              password: passwordcontroller.text.toString())
+          .then((value) async {
+        setState(() {
+          loading = false;
+        });
+        final id = DateTime.now().millisecondsSinceEpoch.toString();
+        databaseref.child(id).set({
+          'id': id,
+          'email': emailcontroller.text.toString(),
+          'name': name.text.toString(),
+          'type': type ? "Expert" : "User"
+        }).then((value) {
+          Utils().toastmessage("Go back to login Button");
+        }).onError((error, stackTrace) {
+          Utils().toastmessage(error.toString());
+        });
 
-
-            await _firestore.collection("user").doc(_auth.currentUser?.uid).set({
-              // 'id':id,
-              'email' : emailcontroller.text.toString(),
-              'name' : name.text.toString(),
-              'type' : type?"Expert":"User",
-              "status" : "Unavailable"
-            });
-            Navigator.pushNamed(context, '/dash');
-          }
-      ).onError((error, stackTrace){
+        await _firestore.collection("user").doc(_auth.currentUser?.uid).set({
+          // 'id':id,
+          'email': emailcontroller.text.toString(),
+          'name': name.text.toString(),
+          'type': type ? "Expert" : "User",
+          "status": "Unavailable"
+        });
+        Navigator.pushNamed(context, '/dash');
+      }).onError((error, stackTrace) {
         Utils().toastmessage(error.toString());
         setState(() {
-          loading=false;
+          loading = false;
         });
       });
     } else if (!agreePersonalData) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
+        SnackBar(
             content: Text(
-                'Please agree to the processing of personal data')),
+                AppLocalizations.of(context)!.sg_agreetoprocessdataSnackbar)),
       );
     }
   }
@@ -110,15 +109,15 @@ class _SignupState extends State<Signup> {
     super.dispose();
     emailcontroller.dispose();
     passwordcontroller.dispose();
-
   }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-          SystemNavigator.pop();
-          return true;
-        },
+        SystemNavigator.pop();
+        return true;
+      },
       child: Custom_Scaffold(
         child: Column(
           children: [
@@ -148,7 +147,7 @@ class _SignupState extends State<Signup> {
                       children: [
                         // get started text
                         Text(
-                          'Get Started',
+                          AppLocalizations.of(context)!.sg_getstarted,
                           style: TextStyle(
                             fontSize: 30.0,
                             fontWeight: FontWeight.w900,
@@ -169,8 +168,10 @@ class _SignupState extends State<Signup> {
                             return null;
                           },
                           decoration: InputDecoration(
-                            label: const Text('Full Name'),
-                            hintText: 'Enter Full Name',
+                            label:
+                                Text(AppLocalizations.of(context)!.sg_fullname),
+                            hintText:
+                                AppLocalizations.of(context)!.sg_enterfullname,
                             hintStyle: const TextStyle(
                               color: Colors.black26,
                             ),
@@ -197,8 +198,9 @@ class _SignupState extends State<Signup> {
                           keyboardType: TextInputType.emailAddress,
                           validator: validateEmail,
                           decoration: InputDecoration(
-                            label: const Text('Email'),
-                            hintText: 'Enter Email',
+                            label: Text(AppLocalizations.of(context)!.lg_email),
+                            hintText:
+                                AppLocalizations.of(context)!.lg_hintemail,
                             hintStyle: const TextStyle(
                               color: Colors.black26,
                             ),
@@ -228,16 +230,16 @@ class _SignupState extends State<Signup> {
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Please enter Password';
-                            }else{
-                              if(value.length<6){
+                            } else {
+                              if (value.length < 6) {
                                 return 'Password should Contain more than 6 letters';
                               }
                             }
                             return null;
                           },
                           decoration: InputDecoration(
-                            label: const Text('Password'),
-                            hintText: 'Enter Password',
+                            label: Text(AppLocalizations.of(context)!.lg_pass),
+                            hintText: AppLocalizations.of(context)!.lg_hintpass,
                             hintStyle: const TextStyle(
                               color: Colors.black26,
                             ),
@@ -269,14 +271,14 @@ class _SignupState extends State<Signup> {
                               },
                               activeColor: lightColorScheme.primary,
                             ),
-                            const Text(
-                              'I am an ',
+                            Text(
+                              AppLocalizations.of(context)!.sg_iama,
                               style: TextStyle(
                                 color: Colors.black45,
                               ),
                             ),
                             Text(
-                              'Expert Specialist',
+                              AppLocalizations.of(context)!.sg_expspec,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: lightColorScheme.primary,
@@ -299,14 +301,14 @@ class _SignupState extends State<Signup> {
                               },
                               activeColor: lightColorScheme.primary,
                             ),
-                            const Text(
-                              'I agree to the processing of ',
+                            Text(
+                              AppLocalizations.of(context)!.sg_agreeprocessdata,
                               style: TextStyle(
                                 color: Colors.black45,
                               ),
                             ),
                             Text(
-                              'Personal data',
+                              AppLocalizations.of(context)!.sg_personaldata,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: lightColorScheme.primary,
@@ -325,12 +327,14 @@ class _SignupState extends State<Signup> {
                             onPressed: () {
                               signup();
                             },
-                            child: loading?const CircularProgressIndicator(
-                              strokeWidth: 3 ,
-                              color: Colors.white,
-                            ): const Text(
-                                'Sign up',
-                            ),
+                            child: loading
+                                ? const CircularProgressIndicator(
+                                    strokeWidth: 3,
+                                    color: Colors.white,
+                                  )
+                                : Text(
+                                    AppLocalizations.of(context)!.ws_signup,
+                                  ),
                           ),
                         ),
                         const SizedBox(
@@ -346,13 +350,13 @@ class _SignupState extends State<Signup> {
                                 color: Colors.grey.withOpacity(0.5),
                               ),
                             ),
-                            const Padding(
+                            Padding(
                               padding: EdgeInsets.symmetric(
                                 vertical: 0,
                                 horizontal: 10,
                               ),
                               child: Text(
-                                'Sign up with',
+                                AppLocalizations.of(context)!.lg_sgupwith,
                                 style: TextStyle(
                                   color: Colors.black45,
                                 ),
@@ -386,8 +390,8 @@ class _SignupState extends State<Signup> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Text(
-                              'Already have an account? ',
+                            Text(
+                              AppLocalizations.of(context)!.sg_alreadyacc,
                               style: TextStyle(
                                 color: Colors.black45,
                               ),
@@ -402,7 +406,7 @@ class _SignupState extends State<Signup> {
                                 );
                               },
                               child: Text(
-                                'Sign in',
+                                AppLocalizations.of(context)!.ws_signin,
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: lightColorScheme.primary,
@@ -426,4 +430,3 @@ class _SignupState extends State<Signup> {
     );
   }
 }
-

@@ -26,7 +26,20 @@
     "lg_agreeprocessdata" : "ਡੇਟਾ ਪ੍ਰਕਿਰਿਆ ਕਰਨ ਲਈ ਸਹਿਮਤ",
     "lg_forgotpass" : "ਪਾਸਵਰਡ ਭੁੱਲ ਗਏ ਹੋ?",
     "lg_sgupwith" : "ਸਾਈਨ ਅੱਪ ਕਰੋ",
-    "lg_donthaveacc" : "ਕੀ ਕੋਈ ਖਾਤਾ ਨਹੀਂ ਹੈ?"
-
+    "lg_donthaveacc" : "ਕੀ ਕੋਈ ਖਾਤਾ ਨਹੀਂ ਹੈ? ",
+    "sg_alreadyacc" : "ਕੀ ਪਹਿਲਾਂ ਤੋਂ ਹੀ ਖਾਤਾ ਹੈ?",
+    "sg_agreeprocessdata" : "ਮੈਂ ਦੀ ਪ੍ਰਕਿਰਿਆ ਲਈ ਸਹਿਮਤ ਹਾਂ ",
+    "sg_personaldata" : "ਨਿਜੀ ਸੂਚਨਾ",
+    "sg_fullname": "ਪੂਰਾ ਨਾਂਮ",
+    "sg_enterfullname" : "ਪੂਰਾ ਨਾਮ ਦਰਜ ਕਰੋ",
+    "sg_iama": "ਮੈਂ ਇੱਕ ",
+    "sg_expspec": "ਮਾਹਰ ਸਪੈਸ਼ਲਿਸਟ ਹਾਂ",
+    "sg_processingdata": "ਪ੍ਰੋਸੈਸਿੰਗ ਡੇਟਾ",
+    "sg_agreetoprocessdataSnackbar" : "ਕਿਰਪਾ ਕਰਕੇ ਨਿੱਜੀ ਡੇਟਾ ਦੀ ਪ੍ਰਕਿਰਿਆ ਲਈ ਸਹਿਮਤ ਹੋਵੋ",
+    "sg_getstarted": "ਸ਼ੁਰੂ ਕਰੋ",
+    "post_search" : "ਖੋਜ",
+    "chat_search" : "ਖੋਜ...",
+    "chat_chats" : "ਗੱਲਬਾਤ",
+    "chat_convo" : "ਗੱਲਬਾਤ"
 
 }

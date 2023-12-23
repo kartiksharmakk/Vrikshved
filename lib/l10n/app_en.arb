@@ -26,5 +26,19 @@
     "lg_agreeprocessdata" : "Agree to process data",
     "lg_forgotpass" : "Forget password?",
     "lg_sgupwith" : "Sign Up With",
-    "lg_donthaveacc" : "Don't have an account?"
+    "lg_donthaveacc" : "Don't have an account? ",
+    "sg_alreadyacc" : "Already have an account?",
+    "sg_agreeprocessdata" : "I agree to the processing of ",
+    "sg_personaldata" : "Personal data",
+    "sg_fullname": "Full Name",
+    "sg_enterfullname" : "Enter Full Name",
+    "sg_iama": "I am an ",
+    "sg_expspec": "Expert Specialist",
+    "sg_processingdata": "Processing Data",
+    "sg_agreetoprocessdataSnackbar" : "Please agree to the processing of personal data",
+    "sg_getstarted": "Get Started",
+    "post_search" : "Search",
+    "chat_search" : "Search...",
+    "chat_chats" : "Chats",
+    "chat_convo" : "Conversations"
 }

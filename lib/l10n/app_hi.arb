@@ -26,5 +26,19 @@
     "lg_agreeprocessdata" : "डेटा संसाधित के लिए सहमत",
     "lg_forgotpass" : "पासवर्ड भूल गए?",
     "lg_sgupwith" : "साइन अप करें",
-    "lg_donthaveacc" : "क्या आपके पास खाता नहीं है?"
+    "lg_donthaveacc" : "आपके पास खाता नहीं है? ",
+    "sg_alreadyacc" : "आपके पास पहले से खाता मौजूद है?",
+    "sg_agreeprocessdata" : "मैं इसके प्रसंस्करण के लिए सहमत हूं ",
+    "sg_personaldata" : "व्यक्तिगत डेटा",
+    "sg_fullname": "पूरा नाम",
+    "sg_enterfullname" : "पूरा नाम दर्ज करें",
+    "sg_iama": "मैं एक ",
+    "sg_expspec": "विशेषज्ञ विशेषज्ञ हूं",
+    "sg_processingdata": "डाटा प्रोसेसिंग",
+    "sg_agreetoprocessdataSnackbar" : "कृपया व्यक्तिगत डेटा के प्रसंस्करण के लिए सहमति दें",
+    "sg_getstarted": "शुरू हो जाओ",
+    "post_search" : "खोज",
+    "chat_search" : "खोज...",
+    "chat_chats" : "चैट",
+    "chat_convo" : "बात चिट"
 }
