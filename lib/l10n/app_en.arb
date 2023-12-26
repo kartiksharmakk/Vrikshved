@@ -40,5 +40,7 @@
     "post_search" : "Search",
     "chat_search" : "Search...",
     "chat_chats" : "Chats",
-    "chat_convo" : "Conversations"
+    "chat_convo" : "Conversations",
+    "fg_reseturpass" : "Reset Your Password",
+    "fg_resetpass" : "Reset Password"
 }

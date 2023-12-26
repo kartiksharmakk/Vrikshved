@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:plant_rec/Controller/language_change_controller.dart';
 import 'package:provider/provider.dart';
 
@@ -20,6 +19,7 @@ class Custom_Scaffold extends StatelessWidget {
           Consumer<LanguageChangeController>(
               builder: (context, provider, child) {
             return PopupMenuButton(
+                icon: Icon(Icons.language_rounded),
                 onSelected: (Language item) {
                   if (Language.english.name == item.name) {
                     provider.changeLanguage(Locale('en'));

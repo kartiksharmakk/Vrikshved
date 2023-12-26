@@ -1,6 +1,11 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:uuid/uuid.dart';
 
 class Chatroom extends StatelessWidget {
   String? email;
@@ -30,6 +35,63 @@ class Chatroom extends StatelessWidget {
     }
   }
 
+  File? image;
+
+  void sendImage() async{
+    ImagePicker _picker=ImagePicker();
+
+    await _picker.pickImage(source: ImageSource.gallery).then((value){
+      if(value!=null){
+        image=File(value.path);
+        uploadImage();
+      }
+    });
+  }
+
+  Future uploadImage() async {
+    String fileName = Uuid().v1();
+    int status = 1;
+
+    await _firestore
+        .collection('chatroom')
+        .doc(chatID)
+        .collection('chats')
+        .doc(fileName)
+        .set({
+      "sendby": auth.currentUser!.email.toString(),
+      "message": "",
+      "type": "img",
+      "time": FieldValue.serverTimestamp(),
+    });
+
+    var ref =
+    FirebaseStorage.instance.ref().child('images').child("$fileName.jpg");
+
+    var uploadTask = await ref.putFile(image!).catchError((error) async {
+      await _firestore
+          .collection('chatroom')
+          .doc(chatID)
+          .collection('chats')
+          .doc(fileName)
+          .delete();
+
+      status = 0;
+    });
+
+    if (status == 1) {
+      String imageUrl = await uploadTask.ref.getDownloadURL();
+
+      await _firestore
+          .collection('chatroom')
+          .doc(chatID)
+          .collection('chats')
+          .doc(fileName)
+          .update({"message": imageUrl});
+
+      print(imageUrl);
+    }
+  }
+
   // ChatRoom({required this.chatRoomId, required this.userMap});
   final auth=FirebaseAuth.instance;
 
@@ -42,25 +104,57 @@ class Chatroom extends StatelessWidget {
       return Container(
         width: MediaQuery.of(context).size.width,
         alignment: align,
-        child: Container(
-          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-          margin: EdgeInsets.symmetric(vertical: 5, horizontal: 8),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            color: align==Alignment.topRight?
-            const Color(0xFF4C53A5)
-                :
-            const Color(0xCC4C53A5),
-          ),
-          child: Text(
-            msg["message"],
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w500,
-              color: Colors.white,
+        child: msg['type']=="text"?
+        Container(
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+            margin: EdgeInsets.symmetric(vertical: 5, horizontal: 8),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              color: align==Alignment.topRight?
+              const Color(0xFF4C53A5)
+                  :
+              const Color(0xCC4C53A5),
             ),
-          ),
-        ),
+            child:Text(
+              msg["message"],
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
+                color: Colors.white,
+              ),
+            )
+        )
+            :
+        Container(
+            padding: EdgeInsets.all(5),
+            margin: EdgeInsets.symmetric(vertical: 5, horizontal: 8),
+            constraints: BoxConstraints(
+              maxHeight: MediaQuery.of(context).size.height/3,
+              maxWidth: MediaQuery.of(context).size.width/1.25
+            ),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(15)),
+              color: align==Alignment.topRight?
+              const Color(0xFF4C53A5)
+                  :
+              const Color(0xCC4C53A5),
+            ),
+            child:InkWell(
+              onTap: () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => ShowImage(
+                    imageUrl: msg['message'],
+                  ),
+                ),
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(15),
+                child: Image.network(
+                  msg['message'],
+                  ),
+              ),
+            ),
+            )
       );
     }
 
@@ -83,16 +177,28 @@ class Chatroom extends StatelessWidget {
       ),
       body:ListView(
         children: [
-          Container(
-            margin: EdgeInsets.only(top: 20),
-            height: MediaQuery.of(context).size.height/1.23,
-          decoration: BoxDecoration(
-          color: Colors.white,
-              borderRadius: BorderRadius.only(
-                  topRight: Radius.elliptical(500, 50),
-                  topLeft: Radius.elliptical(500, 50)
+          Stack(
+            children: [
+              Container(
+                height: 30,
+                decoration: BoxDecoration(
+                  color:  const Color(0xFF4C53A5)
+                ),
+              ),
+              Container(
+                height: 30,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(50),
+                          topLeft: Radius.circular(50)
+                      )
+                  ),
               )
+            ],
           ),
+          Container(
+            height: MediaQuery.of(context).size.height/1.23,
           child:StreamBuilder<QuerySnapshot>(
                       stream: _firestore
                           .collection("chatroom")
@@ -102,11 +208,11 @@ class Chatroom extends StatelessWidget {
                           .snapshots(),
                         builder: (BuildContext context,AsyncSnapshot<QuerySnapshot> snapshot){
                           if(snapshot.data!=null){
-                            print("objecwt");
+                            // print("objecwt");
                             return ListView.builder(
                               itemCount: snapshot.data!.docs.length,
                               itemBuilder: (context, index) {
-                                print("asdasdas");
+                                // print("asdasdas");
                                 if(snapshot.data?.docs[index]["sendby"]==auth.currentUser!.email.toString()){
                                   return message(Alignment.topRight,snapshot.data?.docs[index]);
                                 }
@@ -131,6 +237,10 @@ class Chatroom extends StatelessWidget {
                   child: TextFormField(
                   controller: msg,
                   decoration: InputDecoration(
+                    suffixIcon: IconButton(
+                      icon:Icon(Icons.image),
+                      onPressed: sendImage,
+                    ),
                     label: const Text("Your Message"),
                     hintText: "Type Your Message Here...",
                     hintStyle: const TextStyle(
@@ -161,15 +271,36 @@ class Chatroom extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(right: 10.0),
-                child: IconButton(
+                  padding: const EdgeInsets.only(right: 10.0),
+                  child: IconButton(
                     icon:Icon(Icons.send),
-                  onPressed: sendMessage,
-                )
+                    onPressed: sendMessage,
+                  )
               )
             ],
           ),
         ],
+      ),
+    );
+  }
+}
+
+
+class ShowImage extends StatelessWidget {
+  final String imageUrl;
+
+  const ShowImage({required this.imageUrl, Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+
+    return Scaffold(
+      body: Container(
+        height: size.height,
+        width: size.width,
+        color: Colors.black,
+        child: Image.network(imageUrl),
       ),
     );
   }

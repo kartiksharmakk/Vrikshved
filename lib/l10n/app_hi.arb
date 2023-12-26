@@ -40,5 +40,8 @@
     "post_search" : "खोज",
     "chat_search" : "खोज...",
     "chat_chats" : "चैट",
-    "chat_convo" : "बात चिट"
+    "chat_convo" : "बात चिट",
+    "fg_reseturpass" : "अपना पासवर्ड रीसेट करें",
+    "fg_resetpass" : "रीसेट पासवर्ड"
+
 }

@@ -2,6 +2,8 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:plant_rec/widget/plant_recogniser.dart';
+import 'package:provider/provider.dart';
+import 'Controller/language_change_controller.dart';
 import 'Post.dart';
 import 'home1.dart';
 

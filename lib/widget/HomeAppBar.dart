@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:plant_rec/Utils/utils.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:plant_rec/Controller/language_change_controller.dart';
+import 'package:plant_rec/widget/Custom_Scaffold.dart';
 import 'package:provider/provider.dart';
 
 class HomeAppBar extends StatelessWidget {
@@ -38,13 +39,39 @@ class HomeAppBar extends StatelessWidget {
           const Padding(padding: EdgeInsets.only(left: 20)),
           Text(
             AppLocalizations.of(context)!.homeappbar_title_vrikshveda,
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 23,
                 fontFamily: 'Squada',
                 color: Color(0xFF4C53A5),
                 fontWeight: FontWeight.bold),
           ),
           const Spacer(),
+          Container(
+            child: Consumer<LanguageChangeController>(
+                builder: (context, provider, child) {
+                  return PopupMenuButton<Language>(
+                    icon: Icon(Icons.language_rounded,color:Color(0xFF4C53A5),),
+                      color: Colors.white,
+                      onSelected: (Language item) {
+                        if (Language.english.name == item.name) {
+                          provider.changeLanguage(Locale('en'));
+                        } else if (Language.hindi.name == item.name) {
+                          provider.changeLanguage(Locale('hi'));
+                        } else if (Language.punjabi.name == item.name) {
+                          provider.changeLanguage(Locale('pa'));
+                        }
+                      },
+                      itemBuilder: (BuildContext contex) =>
+                      <PopupMenuEntry<Language>>[
+                        const PopupMenuItem(
+                            value: Language.english, child: Text("ENGLISH")),
+                        const PopupMenuItem(
+                            value: Language.hindi, child: Text("HINDI")),
+                        const PopupMenuItem(
+                            value: Language.punjabi, child: Text("PUNJABI"))
+                      ]);
+                }),
+          ),
           guest
               ? Container()
               : Badge(

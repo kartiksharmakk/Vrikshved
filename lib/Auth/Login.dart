@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:plant_rec/Utils/utils.dart';
 import 'package:plant_rec/theme/theme.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'Forget.dart';
 import 'Signup.dart';
 import '../widget/Custom_Scaffold.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -78,11 +79,6 @@ class _LoginState extends State<Login> {
           loading = false;
         });
       });
-    } else if (!rememberPass) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-            content: Text('Please agree to the processing of personal data')),
-      );
     }
   }
 
@@ -206,11 +202,21 @@ class _LoginState extends State<Login> {
                                 ],
                               ),
                               GestureDetector(
-                                child: Text(
-                                  AppLocalizations.of(context)!.lg_forgotpass,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: lightColorScheme.primary,
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (e) => const Forget(),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  child: Text(
+                                    AppLocalizations.of(context)!.lg_forgotpass,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: lightColorScheme.primary,
+                                    ),
                                   ),
                                 ),
                               ),

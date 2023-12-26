@@ -40,6 +40,8 @@
     "post_search" : "ਖੋਜ",
     "chat_search" : "ਖੋਜ...",
     "chat_chats" : "ਗੱਲਬਾਤ",
-    "chat_convo" : "ਗੱਲਬਾਤ"
+    "chat_convo" : "ਗੱਲਬਾਤ",
+    "fg_reseturpass" : "ਆਪਣਾ ਪਾਸਵਰਡ ਰੀਸੈਟ ਕਰੋ",
+    "fg_resetpass" : "ਰੀਸੈਟ ਪਾਸਵਰਡ"
 
 }
