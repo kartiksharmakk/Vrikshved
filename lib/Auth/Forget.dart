@@ -53,94 +53,95 @@ class _ForgetState extends State<Forget> {
   Widget build(BuildContext context) {
     return Custom_Scaffold(
         child: Column(
-          children: [
-            const Expanded(
-                flex: 1,
-                child: SizedBox(
-                  height: 10,
-                )),
-            Expanded(
-                flex: 3,
-                child: Container(
-                  padding: const EdgeInsets.fromLTRB(25, 50, 25, 20),
-                  decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(40),
-                        topRight: Radius.circular(40),
-                      )),
-                  child: SingleChildScrollView(
-                    child: Form(
-                        key: _formSignInKey,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Reset Your Password",
-                              style: TextStyle(
-                                  color: lightColorScheme.primary,
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.w900),
-                            ),
-                            const SizedBox(
-                              height: 40,
-                            ),
-                            TextFormField(
-                              validator: validateEmail,
-                              controller: emailcontroller,
-                              keyboardType: TextInputType.emailAddress,
-                              decoration: InputDecoration(
-                                label:
-                                Text(AppLocalizations.of(context)!.lg_email),
-                                hintText:
+      children: [
+        const Expanded(
+            flex: 1,
+            child: SizedBox(
+              height: 10,
+            )),
+        Expanded(
+            flex: 3,
+            child: Container(
+              padding: const EdgeInsets.fromLTRB(25, 50, 25, 20),
+              decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(40),
+                    topRight: Radius.circular(40),
+                  )),
+              child: SingleChildScrollView(
+                child: Form(
+                    key: _formSignInKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          AppLocalizations.of(context)!.fg_reseturpass,
+                          style: TextStyle(
+                              color: lightColorScheme.primary,
+                              fontSize: 30,
+                              fontWeight: FontWeight.w900),
+                        ),
+                        const SizedBox(
+                          height: 40,
+                        ),
+                        TextFormField(
+                          validator: validateEmail,
+                          controller: emailcontroller,
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                            label: Text(AppLocalizations.of(context)!.lg_email),
+                            hintText:
                                 AppLocalizations.of(context)!.lg_hintemail,
-                                hintStyle: const TextStyle(
-                                  color: Colors.black26,
-                                ),
-                                border: OutlineInputBorder(
-                                    borderSide:
+                            hintStyle: const TextStyle(
+                              color: Colors.black26,
+                            ),
+                            border: OutlineInputBorder(
+                                borderSide:
                                     const BorderSide(color: Colors.black12),
-                                    borderRadius: BorderRadius.circular(10)),
-                                enabledBorder: OutlineInputBorder(
-                                    borderSide:
+                                borderRadius: BorderRadius.circular(10)),
+                            enabledBorder: OutlineInputBorder(
+                                borderSide:
                                     const BorderSide(color: Colors.black12),
-                                    borderRadius: BorderRadius.circular(10)),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 25,
-                            ),
-                            SizedBox(
-                              width: double.infinity,
-                              child: ElevatedButton(
-                                  onPressed: () {
-                                    _auth
-                                        .sendPasswordResetEmail(
-                                        email: emailcontroller.text.toString()
-                                    ).then((value){
-                                      Utils().toastmessage("We have sent you a mail to recover your password");
-                                    }).onError((error, stackTrace){
-                                      Utils().toastmessage(error.toString());
-                                    });
-                                  },
-                                  child: loading
-                                      ? const CircularProgressIndicator(
-                                    color: Colors.white,
-                                    strokeWidth: 3,
-                                  )
-                                      : Text("Reset Password")),
-                            ),
-                            const SizedBox(
-                              height: 25,
-                            ),
-                            const SizedBox(
-                              height: 20.0,
-                            ),
-                          ],
-                        )),
-                  ),
-                ))
-          ],
-        ));
+                                borderRadius: BorderRadius.circular(10)),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 25,
+                        ),
+                        SizedBox(
+                          width: double.infinity,
+                          child: ElevatedButton(
+                              onPressed: () {
+                                _auth
+                                    .sendPasswordResetEmail(
+                                        email: emailcontroller.text.toString())
+                                    .then((value) {
+                                  Utils().toastmessage(
+                                      "We have sent you a mail to recover your password");
+                                }).onError((error, stackTrace) {
+                                  Utils().toastmessage(error.toString());
+                                });
+                              },
+                              child: loading
+                                  ? const CircularProgressIndicator(
+                                      color: Colors.white,
+                                      strokeWidth: 3,
+                                    )
+                                  : Text(AppLocalizations.of(context)!
+                                      .fg_resetpass)),
+                        ),
+                        const SizedBox(
+                          height: 25,
+                        ),
+                        const SizedBox(
+                          height: 20.0,
+                        ),
+                      ],
+                    )),
+              ),
+            ))
+      ],
+    ));
   }
 }
