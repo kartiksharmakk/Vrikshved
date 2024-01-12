@@ -15,6 +15,22 @@ class Chatroom extends StatelessWidget {
   final _firestore=FirebaseFirestore.instance;
 
 
+  showstatus(){
+    var a=StreamBuilder(
+      stream: _firestore.collection("user").where('email',isEqualTo: email).snapshots(),
+        builder: (context,snapshot){
+        if(snapshot.data!=null){
+          return Text(
+            snapshot.data!.docs[0]['status']
+          );
+        }
+        return Text("dataqadasd");
+        }
+    );
+    return a;
+  }
+
+
   void sendMessage() async {
     if (msg.text.isNotEmpty) {
       Map<String, dynamic> messages = {
@@ -113,7 +129,7 @@ class Chatroom extends StatelessWidget {
               color: align==Alignment.topRight?
               const Color(0xFF4C53A5)
                   :
-              const Color(0xCC4C53A5),
+              const Color(0xAA4C53A5),
             ),
             child:Text(
               msg["message"],
@@ -159,7 +175,8 @@ class Chatroom extends StatelessWidget {
     }
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xFFEDECF1),
+
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: const Color(0xFF4C53A5),
@@ -170,7 +187,7 @@ class Chatroom extends StatelessWidget {
           style: TextStyle(
               fontSize: 30,
               fontFamily: 'Squada',
-              color: Colors.white,
+              color: Color(0xFFEDECF2),
               fontWeight: FontWeight.w900
           ),
         ),
@@ -186,19 +203,23 @@ class Chatroom extends StatelessWidget {
                 ),
               ),
               Container(
+                alignment: Alignment.center,
+                width: double.infinity,
                 height: 30,
                   decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Color(0xFFEDECF1),
                       borderRadius: BorderRadius.only(
                           topRight: Radius.circular(50),
                           topLeft: Radius.circular(50)
                       )
                   ),
+                child: showstatus(),
               )
             ],
           ),
+          SizedBox(height: 10,),
           Container(
-            height: MediaQuery.of(context).size.height/1.23,
+            height: MediaQuery.of(context).size.height/1.25,
           child:StreamBuilder<QuerySnapshot>(
                       stream: _firestore
                           .collection("chatroom")

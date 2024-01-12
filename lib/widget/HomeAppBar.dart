@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:plant_rec/Utils/utils.dart';
@@ -24,6 +25,10 @@ class HomeAppBar extends StatelessWidget {
         children: [
           IconButton(
             onPressed: () {
+              final _firestore=FirebaseFirestore.instance;
+              _firestore.collection("user").doc(auth.currentUser?.uid).update({
+                "status":"Offline",
+              });
               auth.signOut().then((value) {
                 Navigator.pushNamed(context, '/');
               }).onError((error, stackTrace) {

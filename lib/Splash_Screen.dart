@@ -41,6 +41,6 @@ class Splash extends StatelessWidget {
             nextScreen: MyApp(locale: locale),
             splashTransition: SplashTransition.slideTransition,
             pageTransitionType: PageTransitionType.topToBottom,
-            backgroundColor: const Color(0xFF112425)));
+            backgroundColor: const Color(0xFF4C53A5)));
   }
 }

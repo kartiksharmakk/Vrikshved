@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:plant_rec/widget/plant_recogniser.dart';
@@ -14,13 +16,44 @@ class Dashboard extends StatefulWidget {
   State<Dashboard> createState() => _DashboardState();
 }
 
-class _DashboardState extends State<Dashboard> {
+class _DashboardState extends State<Dashboard> with WidgetsBindingObserver{
   final List<Widget> _children = [
     const PlantRecogniser(),
     const MyHomePage(),
     const Post()
     // Profile(),
   ];
+
+  final _firestore = FirebaseFirestore.instance;
+  final auth = FirebaseAuth.instance;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    setStatus("Online");
+  }
+
+  void setStatus(String status) async{
+    await _firestore.collection("user").doc(auth.currentUser?.uid).update({
+      "status":status,
+    });
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    // TODO: implement didChangeAppLifecycleState
+    super.didChangeAppLifecycleState(state);
+    if(state==AppLifecycleState.resumed){
+      setStatus("Online");
+      print("Asdasnjkdansdkjasndkjasndskajndsndkjasd");
+    }
+    else{
+      setStatus("Offline");
+    }
+  }
+
 
   final GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
 

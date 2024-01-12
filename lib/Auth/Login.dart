@@ -266,15 +266,15 @@ class _LoginState extends State<Login> {
                           const SizedBox(
                             height: 25.0,
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Logo(Logos.facebook_f),
-                              Logo(Logos.twitter),
-                              Logo(Logos.google),
-                              Logo(Logos.apple),
-                            ],
-                          ),
+                          // Row(
+                          //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          //   children: [
+                          //     Logo(Logos.facebook_f),
+                          //     Logo(Logos.twitter),
+                          //     Logo(Logos.google),
+                          //     Logo(Logos.apple),
+                          //   ],
+                          // ),
                           const SizedBox(
                             height: 25.0,
                           ),

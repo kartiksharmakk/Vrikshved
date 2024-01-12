@@ -374,15 +374,15 @@ class _SignupState extends State<Signup> {
                           height: 30.0,
                         ),
                         // sign up social media logo
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Logo(Logos.facebook_f),
-                            Logo(Logos.twitter),
-                            Logo(Logos.google),
-                            Logo(Logos.apple),
-                          ],
-                        ),
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        //   children: [
+                        //     Logo(Logos.facebook_f),
+                        //     Logo(Logos.twitter),
+                        //     Logo(Logos.google),
+                        //     Logo(Logos.apple),
+                        //   ],
+                        // ),
                         const SizedBox(
                           height: 25.0,
                         ),

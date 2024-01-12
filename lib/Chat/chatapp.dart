@@ -13,13 +13,15 @@ class ChatApp extends StatefulWidget {
 }
 
 class _ChatAppState extends State<ChatApp> {
+
+  final _firestore = FirebaseFirestore.instance;
+  final auth = FirebaseAuth.instance;
+
   final search = TextEditingController();
 
   final ref = FirebaseDatabase.instance.ref('login');
 
   late final Map<String, dynamic> userMap;
-  final _firestore = FirebaseFirestore.instance;
-  final auth = FirebaseAuth.instance;
 
   String chatRoomId(String user1, String user2) {
     if (user1[0].toLowerCase().codeUnits[0] >
